@@ -6,13 +6,19 @@
   <title>城市散步</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="top">
   <header class="site-header">
-    <h1>城市散步</h1>
-    <nav>
-      <a href="#event">活動資訊</a>
-      <a href="#signup">立即報名</a>
-    </nav>
+    <div class="header-inner">
+      <h1>城市散步</h1>
+      <nav class="main-nav" aria-label="主選單">
+        <a href="#event">活動資訊</a>
+        <a href="#highlights">行程亮點</a>
+        <a href="#map">路線地圖</a>
+        <a href="#faq">常見問題</a>
+        <a href="#signup">立即報名</a>
+      </nav>
+      <button class="menu-toggle" aria-label="開啟選單">☰</button>
+    </div>
   </header>
 
   <section class="hero">
@@ -21,7 +27,7 @@
     <p>一起走進巷弄、咖啡店、老街與公園，從微小細節裡看見城市的故事。</p>
   </section>
 
-  <section class="event-card with-badge">
+  <section id="event" class="event-card with-badge">
     <span class="badge">剩 8 位</span>
     <h3>活動資訊</h3>
     <ul>
@@ -29,6 +35,28 @@
       <li>地點：中山路老街區</li>
       <li>對象：18 歲以上 / 朋友同伴</li>
     </ul>
+
+    <div class="price-box">
+      <div class="price-main">NT$ 800 / 人</div>
+      <div class="price-list">
+        <p><strong>費用包含：</strong>導覽費、耳機租借、保險、特色茶點</p>
+        <p><strong>費用不含：</strong>交通費、個人消費</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="scarcity-widget">
+    <div class="scarcity-header">
+      <span class="scarcity-label">名額緊張 · 進度條</span>
+      <span class="scarcity-count">剩 8 位</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 73%"></div>
+    </div>
+    <div class="scarcity-meta">
+      <span>已報名 22 / 30 人</span>
+      <span>最後 8 個名額</span>
+    </div>
   </section>
 
   <section class="notice-card notice-with-badge">
@@ -40,5 +68,423 @@
       <li>活動當天請攜帶水壺與小傘</li>
     </ul>
   </section>
+
+  <section class="weather-guide">
+    <div class="section-title">
+      <p class="eyebrow">當日情況</p>
+      <h3>天氣與穿搭指南</h3>
+    </div>
+
+    <div class="weather-card">
+      <div class="weather-main">
+        <p class="weather-label">大稻埕當季氣溫預測</p>
+        <div class="weather-temp">24°C - 28°C <span>晴時多雲</span></div>
+        <div class="weather-icon">☀️</div>
+      </div>
+
+      <div class="weather-tips">
+        <ul>
+          <li>👟 建議穿著好走的布鞋（全程步行約 3 公里）</li>
+          <li>🌂 建議攜帶輕便摺疊傘</li>
+          <li>🧴 建議帶一支防曬或輕薄薄荷噴霧</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="section-title">
+      <p class="eyebrow">路線預覽</p>
+      <h3>街景預覽：先感受這段路的氛圍</h3>
+    </div>
+
+    <div class="photo-gallery">
+      <article class="photo-card">
+        <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=900&q=80" alt="迪化街古蹟" />
+        <div class="gallery-overlay">
+          <span>站點 01</span>
+          <h4>百年中藥行聞香體驗</h4>
+        </div>
+      </article>
+
+      <article class="photo-card">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="老街巷弄" />
+        <div class="gallery-overlay">
+          <span>站點 02</span>
+          <h4>迪化街古蹟與老屋記憶</h4>
+        </div>
+      </article>
+
+      <article class="photo-card">
+        <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80" alt="河岸夕陽" />
+        <div class="gallery-overlay">
+          <span>站點 03</span>
+          <h4>河岸夕陽大合照時刻</h4>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="preference-section">
+    <div class="section-title">
+      <p class="eyebrow">導覽偏好</p>
+      <h3>您最想深入了解的主題是？</h3>
+    </div>
+
+    <div class="preference-selector">
+      <input type="radio" name="topic" id="history" checked>
+      <label for="history">歷史建築</label>
+
+      <input type="radio" name="topic" id="culture">
+      <label for="culture">中藥文化</label>
+
+      <input type="radio" name="topic" id="food">
+      <label for="food">在地美食</label>
+    </div>
+  </section>
+
+  <section class="roadmap-section">
+    <div class="section-title">
+      <p class="eyebrow">行程預告</p>
+      <h3>完賽徽章解鎖路線</h3>
+    </div>
+
+    <div class="milestone-list">
+      <div class="milestone milestone-done">
+        <span class="milestone-icon">🟢</span>
+        <div class="milestone-content">
+          <h4>起點</h4>
+          <p>集合與行前導覽（贈送專屬導覽耳機）</p>
+        </div>
+      </div>
+
+      <div class="milestone milestone-active">
+        <span class="milestone-icon">🔵</span>
+        <div class="milestone-content">
+          <h4>中繼</h4>
+          <p>職人手作體驗（獨家茶點品嚐）</p>
+        </div>
+      </div>
+
+      <div class="milestone milestone-pending">
+        <span class="milestone-icon">⚪</span>
+        <div class="milestone-content">
+          <h4>終點</h4>
+          <p>夕陽河岸大合照（獲得數位紀念明信片）</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="instructor-section">
+    <div class="section-title">
+      <p class="eyebrow">師資介紹</p>
+      <h3>城市故事的講解者</h3>
+    </div>
+
+    <div class="instructor-card">
+      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80" alt="導覽師大頭照">
+      <div class="instructor-info">
+        <p class="role">大稻埕文史工作者 10 年資歷</p>
+        <h4>林雅雯</h4>
+        <p>曾帶領超過 200 場城市文化導覽，擅長將街道故事、建築脈絡與生活記憶串連起來。</p>
+        <blockquote>「城市不是一座建築，而是一段被走過、被看見的時間。」</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="timeline-section">
+    <div class="section-title">
+      <p class="eyebrow">行程時程</p>
+      <h3>3 小時城市漫遊時間軸</h3>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="time">14:00</div>
+        <div class="timeline-content">
+          <h4>捷運北門站 3 號出口集合</h4>
+          <p>行前導覽與分組說明</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time">14:30</div>
+        <div class="timeline-content">
+          <h4>探訪百年中藥行</h4>
+          <p>聞香與藥材認識</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time">15:30</div>
+        <div class="timeline-content">
+          <h4>迪化街老屋下午茶與手作體驗</h4>
+          <p>在地茶飲與輕食</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time">17:00</div>
+        <div class="timeline-content">
+          <h4>賦歸與大合照</h4>
+          <p>結束活動與回顧照片</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gear-section">
+    <div class="section-title">
+      <p class="eyebrow">裝備與注意事項</p>
+      <h3>準備好，讓散步更愉快</h3>
+    </div>
+
+    <div class="gear-grid">
+      <div class="gear-box positive">
+        <h4>✅ 建議攜帶</h4>
+        <ul>
+          <li>輕便雨具</li>
+          <li>水壺</li>
+          <li>舒適走路鞋</li>
+          <li>小型相機或手機</li>
+        </ul>
+      </div>
+      <div class="gear-box negative">
+        <h4>❌ 不建議攜帶</h4>
+        <ul>
+          <li>高跟鞋</li>
+          <li>大型行李</li>
+          <li>過重背包</li>
+          <li>滑動式推車</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing-section">
+    <div class="section-title">
+      <p class="eyebrow">試算優惠</p>
+      <h3>立即計算總金額</h3>
+    </div>
+
+    <div class="price-calculator">
+      <div class="calculator-form">
+        <label>
+          票種
+          <select id="ticket-type">
+            <option value="800">成人票 NT$ 800</option>
+            <option value="600">學生票 NT$ 600</option>
+            <option value="1500">雙人同行優惠 NT$ 1,500</option>
+          </select>
+        </label>
+        <label>
+          數量
+          <select id="ticket-count">
+            <option value="1">1 位</option>
+            <option value="2">2 位</option>
+            <option value="3">3 位</option>
+            <option value="4">4 位</option>
+          </select>
+        </label>
+      </div>
+      <div class="calculator-total">
+        <span>總金額</span>
+        <strong id="total-price">NT$ 800</strong>
+      </div>
+    </div>
+  </section>
+
+  <section id="highlights" class="highlights-section">
+    <div class="section-title">
+      <p class="eyebrow">行程亮點</p>
+      <h3>這趟路上，最值得慢慢品味的三個看點</h3>
+    </div>
+
+    <div class="highlight-grid">
+      <article class="place-card">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="迪化街古厝">
+        <div class="place-content">
+          <h4>百年中藥行與布行</h4>
+          <p>沿路走訪老店與歷史街區，感受台北早期商業文化與生活記憶。</p>
+        </div>
+      </article>
+
+      <article class="place-card">
+        <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=900&q=80" alt="霞海城隍廟">
+        <div class="place-content">
+          <h4>專業導覽帶領</h4>
+          <p>由文史工作者帶領，從建築、人物與故事，帶你看見城市的多層面貌。</p>
+        </div>
+      </article>
+
+      <article class="place-card">
+        <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80" alt="永樂市場">
+        <div class="place-content">
+          <h4>在地手沖茶體驗</h4>
+          <p>在散步之餘，停留一刻品嚐在地茶飲與輕食，感受街區的生活節奏。</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="map" class="map-section">
+    <div class="section-title">
+      <p class="eyebrow">路線地圖</p>
+      <h3>集合地點與導覽路線</h3>
+    </div>
+
+    <div class="map-wrap">
+      <div class="route-box">
+        <h4>集合地點</h4>
+        <p>捷運北門站 3 號出口</p>
+        <p>集合時間：09:00</p>
+        <p>建議提前 15 分鐘到場</p>
+      </div>
+
+      <iframe
+        src="https://www.google.com/maps?q=%E5%8C%97%E9%96%80%E7%AB%99%203%20%E8%99%9F%E5%87%BA%E5%8F%A3&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="集合地點地圖">
+      </iframe>
+    </div>
+  </section>
+
+  <section id="faq" class="faq-section">
+    <div class="section-title">
+      <p class="eyebrow">常見問題</p>
+      <h3>你可能想先知道的事</h3>
+    </div>
+
+    <div class="faq-list">
+      <details open>
+        <summary>雨天會照常舉行嗎？</summary>
+        <p>會，除非天候狀況超出安全範圍，活動會提前通知取消或改期。</p>
+      </details>
+
+      <details>
+        <summary>可以攜帶寵物一起參加嗎？</summary>
+        <p>為了維護遊客舒適度與安全，建議不攜帶寵物，除非事前另行聯繫確認。</p>
+      </details>
+
+      <details>
+        <summary>退費機制怎麼算？</summary>
+        <p>活動前 72 小時內取消，將退還 50%；若因天候或主辦方因素取消，將全額退費。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="testimonial-section">
+    <div class="section-title">
+      <p class="eyebrow">活動回饋</p>
+      <h3>參與過的朋友怎麼說</h3>
+    </div>
+
+    <div class="stars">★★★★★</div>
+
+    <div class="testimonial-grid">
+      <article class="quote-card">
+        <p>「這是一場很有層次的城市散步，路線安排很舒服，還有很多故事可以聽。」</p>
+        <h4>— 小雅</h4>
+      </article>
+      <article class="quote-card">
+        <p>「不只是走路，而是慢慢看見這個城市的細節，真的很值得參加。」</p>
+        <h4>— 志豪</h4>
+      </article>
+      <article class="quote-card">
+        <p>「導覽很細緻，茶點也很有特色，整體體驗非常輕鬆愉快。」</p>
+        <h4>— 蕭老師</h4>
+      </article>
+    </div>
+  </section>
+
+  <section id="signup" class="signup-section">
+    <div class="signup-box">
+      <div class="signup-copy">
+        <p class="eyebrow">立即報名</p>
+        <h3>一起走進城市，留下這段值得記住的午後</h3>
+      </div>
+
+      <form class="signup-form">
+        <label>
+          姓名
+          <input type="text" placeholder="請輸入姓名">
+        </label>
+        <label>
+          聯絡電話
+          <input type="tel" placeholder="請輸入手機號碼">
+        </label>
+        <label>
+          電子郵件
+          <input type="email" placeholder="請輸入 Email">
+        </label>
+        <label>
+          報名人數
+          <select>
+            <option>1 位</option>
+            <option>2 位</option>
+            <option>3 位</option>
+            <option>4 位以上</option>
+          </select>
+        </label>
+        <label>
+          是否吃素 / 飲食習慣
+          <select>
+            <option>正常</option>
+            <option>吃素</option>
+            <option>不吃牛肉</option>
+            <option>其他</option>
+          </select>
+        </label>
+        <label>
+          備註
+          <textarea rows="3" placeholder="請填寫備註或飲食習慣"></textarea>
+        </label>
+        <button type="submit">送出報名</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="floating-cta">
+    <span>NT$ 800 / 立即搶位</span>
+    <a href="#signup">立即報名</a>
+  </div>
+
+  <a href="#top" class="back-to-top">Back to Top</a>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('open');
+      });
+    }
+
+    const ticketType = document.getElementById('ticket-type');
+    const ticketCount = document.getElementById('ticket-count');
+    const totalPrice = document.getElementById('total-price');
+
+    function updateTotal() {
+      if (!ticketType || !ticketCount || !totalPrice) return;
+      const unitPrice = Number(ticketType.value);
+      const count = Number(ticketCount.value);
+      const total = unitPrice * count;
+      totalPrice.textContent = `NT$ ${total.toLocaleString()}`;
+    }
+
+    if (ticketType && ticketCount) {
+      ticketType.addEventListener('change', updateTotal);
+      ticketCount.addEventListener('change', updateTotal);
+      updateTotal();
+    }
+
+    const backToTop = document.querySelector('.back-to-top');
+    if (backToTop) {
+      const toggleBackToTop = () => {
+        backToTop.classList.toggle('show', window.scrollY > 300);
+      };
+      window.addEventListener('scroll', toggleBackToTop);
+      toggleBackToTop();
+    }
+  </script>
 </body>
 </html>
