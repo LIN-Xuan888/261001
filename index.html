@@ -21,6 +21,15 @@
     </div>
   </header>
 
+  <div class="countdown-banner" aria-live="polite">
+    <span class="countdown-label">早鳥優惠倒數</span>
+    <div class="countdown-grid">
+      <div class="countdown-box"><strong id="countdown-days">03</strong><span>天</span></div>
+      <div class="countdown-box"><strong id="countdown-hours">14</strong><span>小時</span></div>
+      <div class="countdown-box"><strong id="countdown-minutes">22</strong><span>分</span></div>
+    </div>
+  </div>
+
   <section class="hero">
     <p class="eyebrow">城市漫遊 · 周末限定</p>
     <h2>慢下來，重新感受城市的節奏</h2>
@@ -292,6 +301,78 @@
     </div>
   </section>
 
+  <section class="audio-section">
+    <div class="section-title">
+      <p class="eyebrow">導覽試聽</p>
+      <h3>沉浸式音訊搶先聽</h3>
+    </div>
+
+    <div class="audio-card">
+      <div class="audio-visual" aria-hidden="true">
+        <span class="wave bar-1"></span>
+        <span class="wave bar-2"></span>
+        <span class="wave bar-3"></span>
+        <span class="wave bar-4"></span>
+        <span class="wave bar-5"></span>
+      </div>
+
+      <div class="audio-copy">
+        <button class="audio-button" id="audio-toggle" type="button" aria-label="播放導覽試聽">▶</button>
+        <div>
+          <p class="audio-kicker">🎧 點擊試聽現場導覽收音品質（30 秒搶先聽）</p>
+          <p class="audio-subtitle">專業無線導覽耳機 × 清晰街道聲景</p>
+        </div>
+      </div>
+
+      <audio id="preview-audio" preload="none" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+    </div>
+  </section>
+
+  <section class="addon-section">
+    <div class="section-title">
+      <p class="eyebrow">加購選項</p>
+      <h3>同行夥伴／專屬裝備加購</h3>
+    </div>
+
+    <div class="addon-box">
+      <label class="addon-item">
+        <input type="checkbox" value="150" class="addon-checkbox">
+        <span class="addon-text">[ + NT$ 150 ] 加購大稻埕文創紀念帆布袋</span>
+      </label>
+
+      <label class="addon-item">
+        <input type="checkbox" value="100" class="addon-checkbox">
+        <span class="addon-text">[ + NT$ 100 ] 升級在地手作漢方茶禮盒</span>
+      </label>
+
+      <label class="addon-item">
+        <input type="checkbox" value="220" class="addon-checkbox">
+        <span class="addon-text">[ + NT$ 220 ] 加購導覽耳機保護包與收納袋</span>
+      </label>
+    </div>
+
+    <div class="addon-total">
+      <span>總計金額</span>
+      <strong id="addon-total">NT$ 800</strong>
+    </div>
+  </section>
+
+  <section class="reel-section">
+    <div class="section-title">
+      <p class="eyebrow">回顧花絮</p>
+      <h3>歷屆活動精彩瞬間</h3>
+    </div>
+
+    <div class="reel-card">
+      <div class="reel-thumb">
+        <div class="play-badge">▶</div>
+      </div>
+      <div class="reel-copy">
+        <p>✨ 觀看過往 500+ 學員的真實足跡與歡樂花絮</p>
+      </div>
+    </div>
+  </section>
+
   <section id="highlights" class="highlights-section">
     <div class="section-title">
       <p class="eyebrow">行程亮點</p>
@@ -462,19 +543,48 @@
     const ticketType = document.getElementById('ticket-type');
     const ticketCount = document.getElementById('ticket-count');
     const totalPrice = document.getElementById('total-price');
+    const addonTotal = document.getElementById('addon-total');
+    const addonBoxes = document.querySelectorAll('.addon-checkbox');
+    const audioToggle = document.getElementById('audio-toggle');
+    const previewAudio = document.getElementById('preview-audio');
+
+    function getBaseTotal() {
+      if (!ticketType || !ticketCount) return 800;
+      return Number(ticketType.value) * Number(ticketCount.value);
+    }
 
     function updateTotal() {
       if (!ticketType || !ticketCount || !totalPrice) return;
-      const unitPrice = Number(ticketType.value);
-      const count = Number(ticketCount.value);
-      const total = unitPrice * count;
+      const total = getBaseTotal();
       totalPrice.textContent = `NT$ ${total.toLocaleString()}`;
+
+      if (!addonTotal) return;
+      const addons = [...addonBoxes].reduce((sum, box) => sum + (box.checked ? Number(box.value) : 0), 0);
+      addonTotal.textContent = `NT$ ${(total + addons).toLocaleString()}`;
     }
 
     if (ticketType && ticketCount) {
       ticketType.addEventListener('change', updateTotal);
       ticketCount.addEventListener('change', updateTotal);
       updateTotal();
+    }
+
+    addonBoxes.forEach(box => box.addEventListener('change', updateTotal));
+
+    if (audioToggle && previewAudio) {
+      audioToggle.addEventListener('click', () => {
+        if (previewAudio.paused) {
+          previewAudio.play();
+          audioToggle.textContent = '❚❚';
+        } else {
+          previewAudio.pause();
+          audioToggle.textContent = '▶';
+        }
+      });
+
+      previewAudio.addEventListener('ended', () => {
+        audioToggle.textContent = '▶';
+      });
     }
 
     const backToTop = document.querySelector('.back-to-top');
@@ -485,6 +595,30 @@
       window.addEventListener('scroll', toggleBackToTop);
       toggleBackToTop();
     }
+
+    const targetDeadline = new Date();
+    targetDeadline.setDate(targetDeadline.getDate() + 3);
+    targetDeadline.setHours(targetDeadline.getHours() + 14);
+    targetDeadline.setMinutes(targetDeadline.getMinutes() + 22);
+
+    const countdownDays = document.getElementById('countdown-days');
+    const countdownHours = document.getElementById('countdown-hours');
+    const countdownMinutes = document.getElementById('countdown-minutes');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = Math.max(targetDeadline - now, 0);
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+      if (countdownDays) countdownDays.textContent = String(days).padStart(2, '0');
+      if (countdownHours) countdownHours.textContent = String(hours).padStart(2, '0');
+      if (countdownMinutes) countdownMinutes.textContent = String(minutes).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
   </script>
 </body>
 </html>
